@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+|Column|Type|Options|
+|------|----|-------|
+# （ここに追記していく）
