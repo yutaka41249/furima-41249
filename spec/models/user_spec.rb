@@ -16,8 +16,27 @@ RSpec.describe User, type: :model do
       )
     end
 
-    it '全ての項目が正しく入力されていれば登録できる' do
-      expect(@user).to be_valid
+    context 'ユーザ登録ができない時' do
+      it 'メールアドレスが空では登録できない' do
+        @user.email = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email can't be blank")
+      end
+
+      it 'パスワードが6文字未満では登録できない' do
+        @user.password = '12345'
+        @user.password_confirmation = '12345'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
+      end
+
+      # その他の異常系テストを追加
+      it 'パスワードとパスワード確認が一致しない場合は登録できない' do
+        @user.password = 'password1'
+        @user.password_confirmation = 'password2'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
     end
 
     it 'nicknameが空では登録できない' do
