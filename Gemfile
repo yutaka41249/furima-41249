@@ -86,3 +86,10 @@ gem 'devise'
 group :development do
   gem 'rubocop', require: false #追記
 end
+
+
+group :development, :test do
+  gem 'factory_bot_rails'
+end
+
+gem 'faker'
