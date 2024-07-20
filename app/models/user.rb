@@ -10,7 +10,7 @@ class User < ApplicationRecord
   # validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   # パスワードのバリデーション（Deviseにより自動的に設定される）
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'must include both letters and numbers' }
 
   # お名前（全角）のバリデーション
   validates :last_name, :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/ }
