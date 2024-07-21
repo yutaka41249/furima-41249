@@ -99,6 +99,4 @@ gem 'image_processing', '~> 1.2'
 
 gem 'active_hash'
 
-group :development, :test do
-  gem 'rspec-rails'
-end
+
