@@ -9,31 +9,6 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
-    <%= form_with(model: @item, local: true) do |form| %>
-        <!-- 価格入力フィールド -->
-        <div>
-            <label for="item-price">価格:</label>
-            <input id="item-price" type="text" name="item[price]">
-        </div>
-
-        <!-- 手数料と利益の表示エリア -->
-        <div>
-            <label>販売手数料:</label>
-            <div id="add-tax-price">0</div>
-        </div>
-        <div>
-            <label>販売利益:</label>
-            <div id="profit">0</div>
-        </div>
-
-        <!-- その他のフォーム要素 -->
-
-        <div>
-            <%= form.submit "出品する" %>
-        </div>
-    <% end %>
-</body>
 
 
     <%= yield %>
