@@ -1,4 +1,5 @@
 document.addEventListener("turbo:load", function(){
+  console.log("OK");  // JavaScriptが正しくロードされたことを確認
   const priceInput = document.getElementById("item-price");
   priceInput.addEventListener("input", () => {
     const inputValue = parseInt(priceInput.value); // 数値に変換
