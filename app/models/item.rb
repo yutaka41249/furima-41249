@@ -10,4 +10,5 @@ class Item < ApplicationRecord
   validates :condition_id, presence: true
   validates :shipping_fee_status_id, presence: true
   validates :prefecture_id, presence: true
+  validates :scheduled_delivery_id, presence: true
 end
