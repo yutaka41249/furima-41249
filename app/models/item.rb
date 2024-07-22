@@ -9,4 +9,5 @@ class Item < ApplicationRecord
   validates :category_id, presence: true
   validates :condition_id, presence: true
   validates :shipping_fee_status_id, presence: true
+  validates :prefecture_id, presence: true
 end
