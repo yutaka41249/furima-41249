@@ -7,4 +7,5 @@ class Item < ApplicationRecord
   belongs_to :scheduled_delivery
 
   validates :category_id, presence: true
+  validates :condition_id, presence: true
 end
