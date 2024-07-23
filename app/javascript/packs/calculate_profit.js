@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("OK");  // JavaScriptが正しくロードされたことを確認
   const priceInput = document.getElementById('product_price');
   const profitOutput = document.getElementById('profit');
   const feeOutput = document.getElementById('fee');

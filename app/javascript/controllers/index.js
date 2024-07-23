@@ -1,5 +1,5 @@
 // Import and register all your controllers from the importmap under controllers/*
-
+console.log("OK");  // JavaScriptが正しくロードされたことを確認
 import { application } from "controllers/application"
 
 // Eager load all controllers defined in the import map under controllers/**/*_controller

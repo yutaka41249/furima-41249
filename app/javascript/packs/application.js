@@ -1,4 +1,5 @@
 document.addEventListener("turbolinks:load", function() {
+  console.log("OK");  // JavaScriptが正しくロードされたことを確認
   const priceInput = document.getElementById("item-price");
   priceInput.addEventListener("input", function() {
     const inputValue = priceInput.value;

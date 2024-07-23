@@ -1,3 +1,4 @@
+console.log("OK");  // JavaScriptが正しくロードされたことを確認
 import { Application } from "@hotwired/stimulus"
 
 const application = Application.start()
