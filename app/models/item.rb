@@ -8,6 +8,10 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :scheduled_delivery
 
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :price, numericality: { greater_than: 0 }
+
   validates :category_id, presence: true
   validates :condition_id, presence: true
   validates :shipping_fee_status_id, presence: true
