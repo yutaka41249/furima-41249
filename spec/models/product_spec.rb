@@ -15,6 +15,12 @@ RSpec.describe Product, type: :model do
     it '価格が必須であること' do
       @product.price = nil
       expect(@product).not_to be_valid
+      expect(@product.errors.full_messages).to include('Price is not a number')
+    end
+
+    it '価格が必須であること' do
+      @product.price = nil
+      expect(@product).not_to be_valid
       expect(@product.errors.full_messages).to include("Price can't be blank")
     end
   end
