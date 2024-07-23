@@ -77,7 +77,7 @@ RSpec.describe User, type: :model do
 
       it 'emailが一意でなければ登録できない' do
         @user.save
-        another_user = User.new(email: @user.email, password: 'password1', password_confirmation: 'password1')
+        another_user = FactoryBot.build(:user, email: @user.email)
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
