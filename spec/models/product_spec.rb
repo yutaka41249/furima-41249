@@ -18,10 +18,22 @@ RSpec.describe Product, type: :model do
       expect(@product.errors.full_messages).to include('Price is not a number')
     end
 
-    it '価格が必須であること' do
-      @product.price = nil
+    it '価格が数値であること' do
+      @product.price = 'abc'
       expect(@product).not_to be_valid
-      expect(@product.errors.full_messages).to include("Price can't be blank")
+      expect(@product.errors.full_messages).to include('Price is not a number')
+    end
+
+    it '価格が300以上であること' do
+      @product.price = 299
+      expect(@product).not_to be_valid
+      expect(@product.errors.full_messages).to include('Price must be greater than or equal to 300')
+    end
+
+    it '価格が9999999以下であること' do
+      @product.price = 10_000_000
+      expect(@product).not_to be_valid
+      expect(@product.errors.full_messages).to include('Price must be less than or equal to 9999999')
     end
   end
 end
