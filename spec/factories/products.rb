@@ -10,8 +10,8 @@ FactoryBot.define do
     shipping_days_id { 1 }
 
     after(:build) do |product|
-      product.image.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'files', 'test_image.png')), filename: 'test_image.png', content_type: 'image/png')
-
-
+      product.image.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'files', 'test_image.png')),
+                           filename: 'test_image.png', content_type: 'image/png')
+    end
   end
 end
