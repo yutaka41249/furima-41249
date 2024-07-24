@@ -7,11 +7,11 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @item, local: true do |f| %>
 
-    <%# ここにエラーメッセージ表示ブロックを追加 %>
+
   <% if @item.errors.any? %>
-    <div id="error_explanation" class="login-flash-message">
+    <div id="error_explanation" class="error-alert">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
-      <ul>
+      <ul class="error-message">
       <% @item.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
