@@ -14,11 +14,13 @@ RSpec.describe Item, type: :model do
     )
   end
 
-  context 'バリデーションのテスト' do
-    it 'すべての属性が有効である場合、アイテムは有効である' do
+  context '正常系: すべての値が正しく設定されている場合' do
+    it 'アイテムは有効である' do
       expect(@item).to be_valid
     end
+  end
 
+  context '異常系: バリデーションエラーが発生する条件' do
     it '名前がなければ無効である' do
       @item.name = ''
       expect(@item).not_to be_valid
