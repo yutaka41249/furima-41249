@@ -9,6 +9,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.integer :shipping_fee_id
       t.integer :prefecture_id
       t.integer :shipping_days_id
+      t.integer :user_id
 
       t.timestamps
     end
