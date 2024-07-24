@@ -5,11 +5,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @categories = Category.all
-    @conditions = Condition.all
-    @shipping_fee_statuses = ShippingFeeStatus.all
-    @prefectures = Prefecture.all
-    @scheduled_deliveries = ScheduledDelivery.all
   end
 
   def create
@@ -17,11 +12,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      @categories = Category.all
-      @conditions = Condition.all
-      @shipping_fee_statuses = ShippingFeeStatus.all
-      @prefectures = Prefecture.all
-      @scheduled_deliveries = ScheduledDelivery.all
+
       render :new, status: :unprocessable_entity
     end
   end
