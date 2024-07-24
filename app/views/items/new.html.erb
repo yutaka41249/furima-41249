@@ -9,7 +9,7 @@
 
     <%# ここにエラーメッセージ表示ブロックを追加 %>
   <% if @item.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="login-flash-message">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
       <ul>
       <% @item.errors.full_messages.each do |message| %>
@@ -20,7 +20,6 @@
   <% end %>
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
     <%# render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# 商品画像 %>
     <div class="img-upload">
