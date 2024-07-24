@@ -11,12 +11,13 @@ class Item < ApplicationRecord
   belongs_to :scheduled_delivery
 
   validates :name, presence: true
-  validates :description, presence: true
-  validates :price, numericality: { greater_than_or_equal_to: 300 }
+  validates :description, :image, presence: true
 
-  validates :category_id, presence: true
-  validates :condition_id, presence: true
-  validates :shipping_fee_status_id, presence: true
-  validates :prefecture_id, presence: true
-  validates :scheduled_delivery_id, presence: true
+  validates :price, presence: true,
+                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is invalid' }
+  validates :category_id, numericality: { other_than: 1 }
+  validates :condition_id, numericality: { other_than: 1 }
+  validates :shipping_fee_status_id, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :scheduled_delivery_id, numericality: { other_than: 1 }
 end
