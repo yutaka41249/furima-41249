@@ -8,6 +8,8 @@ RSpec.describe User, type: :model do
 
     context 'ユーザ登録ができる時' do
       it '全ての項目が正しく入力されていれば登録できる' do
+        @user.last_name = '山田'
+        @user.first_name = '太郎'
         expect(@user).to be_valid
       end
     end
@@ -74,8 +76,8 @@ RSpec.describe User, type: :model do
       end
 
       it 'emailが一意でなければ登録できない' do
-        @user.save
-        another_user = User.new(email: @user.email, password: 'password1', password_confirmation: 'password1')
+        user = FactoryBot.create(:user)
+        another_user = FactoryBot.build(:user, email: user.email)
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end

@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :user do
-    nickname { Faker::Name.unique.name }
-    email { Faker::Internet.unique.email }
-    password { 'password123' }
-    password_confirmation { password }
-    last_name { Faker::Name.last_name }
-    first_name { Faker::Name.first_name }
-    last_name_kana { 'タナカ' }
-    first_name_kana { 'タロウ' }
-    birth_date { Faker::Date.birthday(min_age: 18, max_age: 65) }
+    nickname { 'Sample User' }
+    email { Faker::Internet.email }
+    password { 'password1' }
+    password_confirmation { 'password1' }
+    last_name { '山田' } # 全角（漢字・ひらがな・カタカナ）で正しい値に修正
+    first_name { '太郎' } # 全角（漢字・ひらがな・カタカナ）で正しい値に修正
+    last_name_kana { 'ヤマダ' } # 全角カタカナで正しい値に修正
+    first_name_kana { 'タロウ' } # 全角カタカナで正しい値に修正
+    birth_date { '2000-01-01' }
   end
 end

@@ -63,7 +63,7 @@ Things you may want to cover:
 | condition_id   | integer    | null: false                    |
 | shipping_fee_id| integer    | null: false                    |
 | prefecture_id  | integer    | null: false                    |
-| shipping_day_id| integer    | null: false                    |
+| scheduled_delivery_id| integer    | null: false                    |
 
 
 #### アソシエーション
