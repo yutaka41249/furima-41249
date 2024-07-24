@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     nickname { 'Sample User' }
-    email { 'sample@example.com' }
+    email { Faker::Internet.email }
     password { 'password1' }
     password_confirmation { 'password1' }
     last_name { '山田' } # 全角（漢字・ひらがな・カタカナ）で正しい値に修正
