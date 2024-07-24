@@ -15,7 +15,7 @@ RSpec.describe Item, type: :model do
   context '異常系: バリデーションエラーが発生する条件' do
     it '名前がなければ無効である' do
       @item.name = ''
-      @item.valid
+      @item.valid?
       expect(@item.errors.full_messages).to include("Name can't be blank")
     end
 
