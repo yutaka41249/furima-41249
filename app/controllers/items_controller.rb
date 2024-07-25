@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_item, only: [:edit, :update]
   def index
-    @items = Item.includes(:user).order(created_at: :desc) # 商品情報を全て取得し、作成日時の新しい順に並び替える
+    @items = Item.includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -19,13 +19,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return unless current_user.id != @item.user.id
-
-    redirect_to root_path
+    redirect_to root_path if current_user.id != @item.user.id
   end
 
   def update
-    if @item.update(item_params)
+    if @item.update(item_params_with_image)
       redirect_to item_path(@item), notice: '商品情報が更新されました'
     else
       render :edit
