@@ -26,7 +26,8 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params_with_image)
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
       redirect_to item_path(@item), notice: '商品情報が更新されました'
     else
       render :edit
