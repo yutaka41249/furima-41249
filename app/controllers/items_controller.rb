@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_item, only: [:show]
   def index
     @items = Item.includes(:user).order(created_at: :desc) # 商品情報を全て取得し、作成日時の新しい順に並び替える
   end
