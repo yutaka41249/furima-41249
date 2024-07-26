@@ -22,21 +22,21 @@ class ItemsController < ApplicationController
   def show
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if @item.update(item_params)
-      redirect_to @item, notice: '商品情報が更新されました。'
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @item.update(item_params)
+  #     redirect_to @item, notice: '商品情報が更新されました。'
+  #   else
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
 
-  def destroy
-    @item.destroy
-    redirect_to root_path, notice: '商品が削除されました。'
-  end
+  # def destroy
+  #   @item.destroy
+  #   redirect_to root_path, notice: '商品が削除されました。'
+  # end
 
   private
 
