@@ -20,14 +20,13 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    return unless current_user.id != @item.user.id # || @item.sold?
-
+    if current_user.id != @item.user.id || @item.sold_out
     redirect_to root_path
   end
 
   def update
     @item = Item.find(params[:id])
-    if @item.update(item_params)
+    if @item.update(item_params_with_image)
       redirect_to item_path(@item), notice: '商品情報が更新されました'
     else
       render :edit
