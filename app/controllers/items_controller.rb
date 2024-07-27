@@ -20,7 +20,8 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    if current_user.id != @item.user.id || @item.sold_out
+    return unless current_user.id != @item.user.id || @item.sold_out
+
     redirect_to root_path
   end
 
