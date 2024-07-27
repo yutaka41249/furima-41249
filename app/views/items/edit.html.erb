@@ -69,17 +69,17 @@ app/assets/stylesheets/items/new.css %>
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select :shipping_fee_status_id, ShippingFeeStatus.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"} %>
+        <%= f.collection_select :shipping_fee_status_id, ShippingFeeStatus.all, :id, :name, {}, { class: "select-box", id: "item-shipping-fee-status" } %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"} %>
+        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, { class: "select-box", id: "item-prefecture" } %>
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select :scheduled_delivery_id, ScheduledDelivery.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"} %>
+        <%= f.collection_select :scheduled_delivery_id, ScheduledDelivery.all, :id, :name, {}, { class: "select-box", id: "item-scheduled-delivery" } %>
       </div>
     </div>
     <%# /配送について %>
@@ -97,7 +97,7 @@ app/assets/stylesheets/items/new.css %>
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_field :price, class: "price-input", id: "item-price", placeholder: "例）300" %>
         </div>
         <div class="price-content">
           <span>販売手数料 (10%)</span>
@@ -132,7 +132,7 @@ app/assets/stylesheets/items/new.css %>
       <%# /注意書き %>
       <%# 下部ボタン %>
       <div class="sell-btn-contents">
-        <%= f.submit "変更する" ,class:"sell-btn" %>
+        <%= f.submit "変更する", class: "sell-btn" %>
         <%= link_to 'もどる', item_path(@item), class: "back-btn" %>
       </div>
       <%# /下部ボタン %>
@@ -145,7 +145,7 @@ app/assets/stylesheets/items/new.css %>
       <li><a href="#">フリマ利用規約</a></li>
       <li><a href="#">特定商取引に関する表記</a></li>
     </ul>
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <%= link_to image_tag('furima-logo-color.png', size: '185x50'), "/" %>
     <p class="inc">
       ©︎Furima,Inc.
     </p>
