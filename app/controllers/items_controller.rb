@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
+
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:edit, :update, :show]
+
   def index
     @items = Item.includes(:user).order(created_at: :desc)
   end
@@ -21,6 +23,7 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def edit
     redirect_to root_path if current_user.id != @item.user.id || @item.sold_out
   end
@@ -32,6 +35,17 @@ class ItemsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  
+  def show
+  end
+
+ 
+
+  # def destroy
+  #   @item.destroy
+  #   redirect_to root_path, notice: '商品が削除されました。'
+  # end
+
 
   private
 
