@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
       redirect_to root_path, notice: '商品が削除されました'
     else
       redirect_to root_path, alert: '削除権限がありません'
-    end'
+    end
   end
 
 
