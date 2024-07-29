@@ -7,11 +7,11 @@ Rails.application.routes.draw do
 
 
   resources :items do
-    resources :purchases,only: [:index, :new, :create, :show, :edit, :update]
+    resources :purchases,only: [:index, :new, :create, :show, :edit, :update, :destroy]
   end
 
 
- 
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
