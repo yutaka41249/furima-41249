@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 
   def show
   end
-s
+
   def new
     @item = Item.new
   end
