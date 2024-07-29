@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_item, only: [:edit, :update, :show]
+  # before_action :set_item, only: [:edit, :update, :show]
 
   def index
     @items = Item.includes(:user).order(created_at: :desc)
@@ -10,18 +10,18 @@ class ItemsController < ApplicationController
   def show
   end
 
-  def new
-    @item = Item.new
-  end
+  # def new
+  #   @item = Item.new
+  # end
 
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
+  # def create
+  #   @item = Item.new(item_params)
+  #   if @item.save
+  #     redirect_to root_path
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
 
 
   def edit
@@ -46,16 +46,16 @@ class ItemsController < ApplicationController
   # end
 
 
-  private
+  # private
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
+  # def set_item
+  #   @item = Item.find(params[:id])
+  # end
 
-  def item_params
-    params.require(:item).permit(:image, :name, :description, :category_id, :condition_id, :shipping_fee_status_id,
-                                 :prefecture_id, :scheduled_delivery_id, :price).merge(user_id: current_user.id)
-  end
+  # def item_params
+  #   params.require(:item).permit(:image, :name, :description, :category_id, :condition_id, :shipping_fee_status_id,
+  #                                :prefecture_id, :scheduled_delivery_id, :price).merge(user_id: current_user.id)
+  # end
 
   def item_params_with_image
     params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_fee_status_id,
