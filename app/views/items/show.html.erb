@@ -1,6 +1,5 @@
 <%= render "shared/header" %>
-
-<%# 商品の概要 %>
+<%# 商品詳細ページ %>
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
@@ -8,32 +7,31 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image, class: "item-box-img" %>
-      <%# <% if @item.sold_out %>
+
         <div class="sold-out">
           <span>Sold Out!!</span>
         </div>
-      <%#end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        ¥ <%= number_to_currency(@item.price, unit: "", delimiter: ",") %>
+        ¥ <%= @item.price %>
+
       </span>
       <span class="item-postage">
         <%= @item.shipping_fee_status.name %>
       </span>
     </div>
 
-    <% if user_signed_in? %>
-      <% <% if @item.user_id == current_user.id && #!@item.sold_out %>
-        <%= link_to "商品の編集", "# ", class: "item-red-btn" %>
-        <%#= link_to "商品の編集", edit_item_path(@item), class: "item-red-btn" %>
-        <p class="or-text">or</p>
-        <%= link_to "削除", "# ", class: "item-destroy" %>
-        <% elsif @item.user_id != current_user.id && #!@item.sold_out %>
-        <%= link_to "購入画面に進む","#", class: "item-red-btn" %>
-        <%#= link_to "購入画面に進む", new_order_path(@item), class: "item-red-btn" %>
-        <% end %>
-      <% end %>
+
+    <% if user_signed_in? && current_user.id == @item.user.id %>
+      <%= link_to '商品の編集', edit_item_path(@item), class: 'item-red-btn' %>
+      <p class="or-text">or</p>
+      <%= link_to "削除", "# ", class: "item-destroy" %>
+    <% elsif user_signed_in? && @item.purchase.nil? %>
+      <%= link_to "購入画面に進む", "#", class: "item-red-btn" %>
+    <% end %>
+
+
 
     <div class="item-explain-box">
       <span><%= @item.description %></span>
@@ -77,7 +75,6 @@
       </div>
     </div>
   </div>
-  <%# /商品の概要 %>
 
   <div class="comment-box">
     <form>
@@ -89,7 +86,11 @@
       </p>
       <button type="submit" class="comment-btn">
         <%= image_tag "comment.png", class: "comment-flag-icon", width: "20", height: "25" %>
-        <span>コメントする<span>
+
+        <span>コメントする</span>
+
+        
+
       </button>
     </form>
   </div>
