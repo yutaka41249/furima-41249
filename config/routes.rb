@@ -7,13 +7,12 @@ Rails.application.routes.draw do
 
 
   resources :items do
-    resources :purchases,only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :purchases, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   end
 
 
 
-
-
+  resources :orders, only: [:create]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
