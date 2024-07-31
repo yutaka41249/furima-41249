@@ -62,6 +62,24 @@ RSpec.describe DonationAddress, type: :model do
         expect(@donation_address.errors.full_messages).to include('Phone number is invalid')
       end
 
+      it '電話番号が英数字混合では保存できないこと' do
+        @donation_address.phone_number = '090abcd5678'
+        @donation_address.valid?
+        expect(@donation_address.errors.full_messages).to include('Phone number is invalid')
+      end
+
+      it '電話番号が9桁以下では保存できないこと' do
+        @donation_address.phone_number = '090123456'
+        @donation_address.valid?
+        expect(@donation_address.errors.full_messages).to include('Phone number is invalid')
+      end
+
+      it '電話番号が12桁以上では保存できないこと' do
+        @donation_address.phone_number = '090123456789'
+        @donation_address.valid?
+        expect(@donation_address.errors.full_messages).to include('Phone number is invalid')
+      end
+
       it 'userが紐付いていないと保存できないこと' do
         @donation_address.user_id = nil
         @donation_address.valid?
