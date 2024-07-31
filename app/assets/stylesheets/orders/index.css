@@ -1,21 +1,3 @@
-/* カード情報の入力フォームのスタイル */
-.card-form {
-  width: 500px;
-}
-
-.form-wrap {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ボタンのスタイル */
-.button {
-  margin-top: 30px;
-  height: 30px;
-  width: 100px;
-}
-
-/* 購入ページのスタイル */
 
 .transaction-contents {
   width: 100vw;
