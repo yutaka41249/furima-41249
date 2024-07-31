@@ -1,0 +1,15 @@
+<%= form_with model: @order, url: item_purchases_path, id: 'charge-form' do |f| %>
+  <%= f.text_field :postal_code, placeholder: '郵便番号' %>
+  <%= f.select :prefecture, Prefecture.all.map { |p| [p.name, p.id] }, { include_blank: '---' } %>
+  <%= f.text_field :city, placeholder: '市区町村' %>
+  <%= f.text_field :house_number, placeholder: '番地' %>
+  <%= f.text_field :building_name, placeholder: '建物名（任意）' %>
+  <%= f.text_field :phone_number, placeholder: '電話番号' %>
+  <div id="card-form">
+    <div id="number-form"></div>
+    <div id="expiry-form"></div>
+    <div id="cvc-form"></div>
+  </div>
+  <%= f.hidden_field :token %>
+  <%= f.submit '購入' %>
+<% end %>
