@@ -1,32 +1,36 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, except: :index
+
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-    @order = Order.new
+    @order = DonationAddress.new
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = DonationAddress.new(order_params)
     if @order.valid?
       pay_item
       @order.save
       redirect_to root_path
     else
       gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-      render 'index', status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:price).merge(token: params[:token])
+    params.require(:donation_address).permit(:postal_code, :prefecture, :city, :house_number, :building_name, :price, :phone_number).merge(
+      user_id: current_user.id, token: params[:token]
+    )
   end
 
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: order_params[:price],
-      card: order_params[:token],
+      amount: @order.price,
+      card: @order.token,
       currency: 'jpy'
     )
   end
