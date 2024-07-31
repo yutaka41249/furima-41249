@@ -29,7 +29,7 @@ RSpec.describe DonationAddress, type: :model do
       it '郵便番号が半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @donation_address.postal_code = '1234567'
         @donation_address.valid?
-        expect(@donation_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@donation_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
 
       it '都道府県を選択していないと保存できないこと' do
@@ -59,3 +59,20 @@ RSpec.describe DonationAddress, type: :model do
       it '電話番号が10桁以上11桁以内の半角数値でないと保存できないこと' do
         @donation_address.phone_number = '090-1234-5678'
         @donation_address.valid?
+        expect(@donation_address.errors.full_messages).to include('Phone number is invalid')
+      end
+
+      it 'userが紐付いていないと保存できないこと' do
+        @donation_address.user_id = nil
+        @donation_address.valid?
+        expect(@donation_address.errors.full_messages).to include('User must exist')
+      end
+
+      it 'itemが紐付いていないと保存できないこと' do
+        @donation_address.item_id = nil
+        @donation_address.valid?
+        expect(@donation_address.errors.full_messages).to include('Item must exist')
+      end
+    end
+  end
+end
