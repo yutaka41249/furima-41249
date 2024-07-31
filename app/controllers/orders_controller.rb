@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @order = Order.new
   end
 
@@ -22,7 +23,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = sk_testcd89961e5e5b1b4cc40d82476
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: order_params[:price],
       card: order_params[:token],
