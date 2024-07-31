@@ -5,6 +5,8 @@ default: &default
   username: root
   password:
   host: localhost
+  # socket: /var/lib/mysql/mysql.sock  # 必要に応じてコメントアウトを解除
+
 
 development:
   <<: *default
