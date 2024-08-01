@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.sold_out = false # 初期値を明示的に設定
     if @item.save
       redirect_to root_path
     else
@@ -23,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path if current_user.id != @item.user.id || @item.sold_out
+    redirect_to root_path if current_user.id != @item.user.id # || @item.sold_out
   end
 
   def update
@@ -32,9 +33,6 @@ class ItemsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-  end
-
-  def show
   end
 
   def destroy
