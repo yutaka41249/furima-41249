@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
 
@@ -23,9 +22,8 @@ class ItemsController < ApplicationController
     end
   end
 
-
   def edit
-    redirect_to root_path if current_user.id != @item.user.id #|| @item.sold_out
+    redirect_to root_path if current_user.id != @item.user.id # || @item.sold_out
   end
 
   def update
@@ -39,7 +37,6 @@ class ItemsController < ApplicationController
   def show
   end
 
-
   def destroy
     if current_user.id == @item.user.id
       @item.destroy
@@ -49,7 +46,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
   private
 
   def set_item
@@ -58,7 +54,6 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_fee_status_id,
-                                :prefecture_id, :scheduled_delivery_id, :price).merge(user_id: current_user.id)
+                                 :prefecture_id, :scheduled_delivery_id, :price, :image).merge(user_id: current_user.id)
   end
-
 end
