@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe DonationAddress, type: :model do
   before do
-    user = FactoryBot.create(:user)
-    item = FactoryBot.create(:item, user:)
-    @donation_address = FactoryBot.build(:donation_address, user_id: user.id, item_id: item.id)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item, user: @user)
+    @donation_address = FactoryBot.build(:donation_address, user_id: @user.id, item_id: @item.id)
   end
 
   describe '商品購入機能' do
