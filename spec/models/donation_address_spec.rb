@@ -33,7 +33,7 @@ RSpec.describe DonationAddress, type: :model do
       end
 
       it '都道府県を選択していないと保存できないこと' do
-        @donation_address.prefecture_id = 1
+        @donation_address.prefecture_id = 0
         @donation_address.valid?
         expect(@donation_address.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -83,13 +83,13 @@ RSpec.describe DonationAddress, type: :model do
       it 'userが紐付いていないと保存できないこと' do
         @donation_address.user_id = nil
         @donation_address.valid?
-        expect(@donation_address.errors.full_messages).to include('User must exist')
+        expect(@donation_address.errors.full_messages).to include("User can't be blank")
       end
 
       it 'itemが紐付いていないと保存できないこと' do
         @donation_address.item_id = nil
         @donation_address.valid?
-        expect(@donation_address.errors.full_messages).to include('Item must exist')
+        expect(@donation_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
