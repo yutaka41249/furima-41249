@@ -3,7 +3,7 @@
 <h1>購入ページ</h1>
 
 <div class="order-form">
-  <%= form_with(model: [@item, @order], url: item_orders_path(@item), local: true, id: 'charge-form') do |f| %>
+  <%= form_with(url: [@item, @order], url: item_orders_path(@item), local: true, id: 'charge-form') do |f| %>
     <%= render 'layouts/error_messages', model: @order %>
 
     <div class="form-group">
