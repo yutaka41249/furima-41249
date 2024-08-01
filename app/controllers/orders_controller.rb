@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     if @order.valid?
       pay_item
       @order.save
+      @item.update(sold_out: true) # 商品を購入済みに設定
       redirect_to root_path
     else
       gon.public_key = ENV['PAYJP_PUBLIC_KEY']
@@ -30,7 +31,7 @@ class OrdersController < ApplicationController
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @oitem.price,
+      amount: @item.price,
       card: @order.token,
       currency: 'jpy'
     )
