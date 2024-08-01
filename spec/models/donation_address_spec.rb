@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe DonationAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
-    item = FactoryBot.create(:item)
+    item = FactoryBot.create(:item, user:)
     @donation_address = FactoryBot.build(:donation_address, user_id: user.id, item_id: item.id)
   end
 
@@ -57,27 +57,27 @@ RSpec.describe DonationAddress, type: :model do
       end
 
       it '電話番号が10桁以上11桁以内の半角数値でないと保存できないこと' do
-        @donation_address.phone_number = '090-1234-5678'
+        @donation_address.phone_number = '090123456'
         @donation_address.valid?
-        expect(@donation_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@donation_address.errors.full_messages).to include('Phone number is invalid. Must be 10 or 11 digits')
       end
 
       it '電話番号が英数字混合では保存できないこと' do
-        @donation_address.phone_number = '090abcd5678'
+        @donation_address.phone_number = '0901234567a'
         @donation_address.valid?
-        expect(@donation_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@donation_address.errors.full_messages).to include('Phone number is invalid. Must be 10 or 11 digits')
       end
 
       it '電話番号が9桁以下では保存できないこと' do
-        @donation_address.phone_number = '090123456'
+        @donation_address.phone_number = '09012345'
         @donation_address.valid?
-        expect(@donation_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@donation_address.errors.full_messages).to include('Phone number is invalid. Must be 10 or 11 digits')
       end
 
       it '電話番号が12桁以上では保存できないこと' do
         @donation_address.phone_number = '090123456789'
         @donation_address.valid?
-        expect(@donation_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@donation_address.errors.full_messages).to include('Phone number is invalid. Must be 10 or 11 digits')
       end
 
       it 'userが紐付いていないと保存できないこと' do
