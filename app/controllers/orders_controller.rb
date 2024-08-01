@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: :index
+  before_action :set_item, only: [:index, :create]
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
@@ -22,7 +23,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:donation_address).permit(:postal_code, :prefecture, :city, :house_number, :building_name, :price, :phone_number).merge(
-      user_id: current_user.id, token: params[:token]
+      user_id: current_user.id, item_id: @item.id, token: params[:token]
     )
   end
 
@@ -33,5 +34,9 @@ class OrdersController < ApplicationController
       card: @order.token,
       currency: 'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
