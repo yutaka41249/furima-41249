@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path if current_user.id != @item.user.id # || @item.sold_out
+    redirect_to root_path if current_user.id != @item.user.id || @item.sold_out
   end
 
   def update
