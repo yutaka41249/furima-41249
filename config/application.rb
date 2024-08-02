@@ -20,7 +20,7 @@ module Furima
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.gon.global = false
+
 
     config.generators do |g|
       g.stylesheets false
