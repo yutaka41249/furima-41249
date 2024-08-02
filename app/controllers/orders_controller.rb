@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: [:new, :create]
+  before_action :set_item, only: [:index, :create]
 
-  def new
-    @order = DonationAddress.new
+  def index
+    @order = Order.new
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
   end
 
