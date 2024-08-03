@@ -1,30 +1,30 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
 
   def index
-    @order = Order.new
+    @order = DonationAddress.new
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
   end
 
   def create
     @order = DonationAddress.new(order_params)
+
     if @order.valid?
       pay_item
       @order.save
-      @item.update(sold_out: true) # 商品を購入済みに設定
       redirect_to root_path
     else
       gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-      render :new, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
   private
 
   def order_params
-    params.require(:donation_address).permit(:postal_code, :prefecture, :city, :house_number, :building_name, :price, :phone_number).merge(
-      user_id: current_user.id, item_id: @item.id, token: params[:token]
+    params.require(:donation_address).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number, :token).merge(
+      user_id: current_user.id, item_id: params[:item_id]
     )
   end
 

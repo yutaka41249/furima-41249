@@ -108,3 +108,4 @@ end
 gem 'gon'
 
 
+gem 'pry-rails'
