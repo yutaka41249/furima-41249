@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_one_attached :image
-  has_one :order
+  has_many :orders
   belongs_to :user
 
   belongs_to :category
@@ -21,5 +21,7 @@ class Item < ApplicationRecord
   validates :prefecture_id, numericality: { other_than: 1 }
   validates :scheduled_delivery_id, numericality: { other_than: 1 }
 
-  attribute :sold_out, :boolean, default: false
+  def sold_out?
+    orders.exists?
+  end
 end
