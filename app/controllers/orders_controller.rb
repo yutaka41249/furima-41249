@@ -51,8 +51,8 @@ class OrdersController < ApplicationController
   end
 
   def check_order_status
-    nil unless @item.
+    if unless @item.sold_out?
 
-               redirect_to root_path
+    redirect_to root_path
   end
 end
