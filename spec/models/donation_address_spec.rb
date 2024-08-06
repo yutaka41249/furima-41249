@@ -10,13 +10,11 @@ RSpec.describe DonationAddress, type: :model do
   describe '商品購入機能' do
     context '内容に問題がない場合' do
       it 'すべての情報が正しく入力されていれば保存できること' do
-        @donation_address.token = 'tok_abcdefghijk00000000000000000'
         expect(@donation_address).to be_valid
       end
 
       it 'building_nameが空でも保存できること' do
         @donation_address.building_name = ''
-        @donation_address.token = 'tok_abcdefghijk00000000000000000'
         expect(@donation_address).to be_valid
       end
     end
