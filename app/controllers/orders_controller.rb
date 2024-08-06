@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :check_seller, only: [:index, :create]
   before_action :check_order_status, only: [:index, :create]
+  before_action :set_public_key, only: [:index, :create]
 
   def index
     @order = DonationAddress.new
@@ -54,5 +55,9 @@ class OrdersController < ApplicationController
     if unless @item.sold_out?
 
     redirect_to root_path
+  end
+
+  def set_public_key
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
   end
 end
