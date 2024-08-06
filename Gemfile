@@ -99,4 +99,13 @@ gem 'image_processing', '~> 1.2'
 
 gem 'active_hash'
 
+gem 'payjp'
 
+group :test do
+  gem 'database_cleaner-active_record'
+end
+
+gem 'gon'
+
+
+gem 'pry-rails'

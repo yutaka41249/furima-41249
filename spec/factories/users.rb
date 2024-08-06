@@ -4,10 +4,10 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { 'password1' }
     password_confirmation { 'password1' }
-    last_name { '山田' } # 全角（漢字・ひらがな・カタカナ）で正しい値に修正
-    first_name { '太郎' } # 全角（漢字・ひらがな・カタカナ）で正しい値に修正
-    last_name_kana { 'ヤマダ' } # 全角カタカナで正しい値に修正
-    first_name_kana { 'タロウ' } # 全角カタカナで正しい値に修正
+    last_name { '山田' }
+    first_name { '太郎' }
+    last_name_kana { 'ヤマダ' }
+    first_name_kana { 'タロウ' }
     birth_date { '2000-01-01' }
   end
 end

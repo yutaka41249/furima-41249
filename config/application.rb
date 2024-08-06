@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require "gon" # 追加
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -19,6 +20,8 @@ module Furima
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+
     config.generators do |g|
       g.stylesheets false
       g.javascripts false
