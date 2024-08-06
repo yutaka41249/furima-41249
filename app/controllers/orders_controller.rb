@@ -50,9 +50,7 @@ class OrdersController < ApplicationController
   end
 
   def check_order_status
-    if unless @item.sold_out?
-
-    redirect_to root_path
+    redirect_to root_path if @item.sold_out?
   end
 
   def set_public_key
