@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
 
   def index
     @order = DonationAddress.new
-    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
   end
 
   def create
@@ -19,7 +18,6 @@ class OrdersController < ApplicationController
       @item.mark_as_sold_out
       redirect_to root_path
     else
-      gon.public_key = ENV['PAYJP_PUBLIC_KEY']
       render :index, status: :unprocessable_entity
     end
   end
