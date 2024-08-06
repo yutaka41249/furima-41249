@@ -10,11 +10,13 @@ RSpec.describe DonationAddress, type: :model do
   describe '商品購入機能' do
     context '内容に問題がない場合' do
       it 'すべての情報が正しく入力されていれば保存できること' do
+        @donation_address.token = 'tok_abcdefghijk00000000000000000'
         expect(@donation_address).to be_valid
       end
 
       it 'building_nameが空でも保存できること' do
         @donation_address.building_name = ''
+        @donation_address.token = 'tok_abcdefghijk00000000000000000'
         expect(@donation_address).to be_valid
       end
     end
@@ -90,6 +92,12 @@ RSpec.describe DonationAddress, type: :model do
         @donation_address.item_id = nil
         @donation_address.valid?
         expect(@donation_address.errors.full_messages).to include("Item can't be blank")
+      end
+
+      it 'tokenが空では保存できないこと' do
+        @donation_address.token = ''
+        @donation_address.valid?
+        expect(@donation_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
