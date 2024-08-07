@@ -1,10 +1,9 @@
 const price = () => {
-
   const priceInput = document.getElementById("item-price");
 
   if (priceInput) {
     priceInput.addEventListener("input", () => {
-      const inputValue = parseInt(priceInput.value); // 数値に変換
+      const inputValue = parseInt(priceInput.value, 10); // 数値に変換、基数を指定
       if (isNaN(inputValue) || inputValue < 0) { // 入力値が数値でない、または負の数値の場合
         document.getElementById("add-tax-price").textContent = "—";
         document.getElementById("profit").textContent = "—";
@@ -18,7 +17,9 @@ const price = () => {
   }
 };
 
-  window.addEventListener("turbo:load", price);
-  window.addEventListener("turbo: render", price);
+window.addEventListener("turbo:load", price);
+
+
+
 
 
