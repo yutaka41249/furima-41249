@@ -16,7 +16,7 @@ class DonationAddress
 
   def save
     order = Order.create(item_id:, user_id:)
-    ShippingAddress.create(postal_code:, prefecture_id:, city:, address:, building:,
+    ShippingAddress.create(postal_code:, prefecture_id:, city:, house_number:, building_name:,
                            phone_number:, order_id: order.id)
   end
 end

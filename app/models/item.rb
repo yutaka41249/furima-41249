@@ -24,4 +24,8 @@ class Item < ApplicationRecord
   def sold_out?
     order.present?
   end
+
+  def mark_as_sold_out
+    update(sold_out: true)
+  end
 end
