@@ -3,5 +3,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "card"
-import "./item_price"
+import "item_price"
 
